@@ -130,15 +130,15 @@ public class OvrAvatar : MonoBehaviour
     private Vector4 clothingAlphaOffset = new Vector4(0f, 0f, 0f, 1f);
     private UInt64 clothingAlphaTexture = 0;
 
-    // Lipsync
-    private OVRLipSyncMicInput micInput = null;
-    private OVRLipSyncContext lipsyncContext = null;
-    private OVRLipSync.Frame currentFrame = new OVRLipSync.Frame();
-    private float[] visemes = new float[VISEME_COUNT];
-    private AudioSource audioSource;
-    private ONSPAudioSource spatializedSource;
-    private List<float[]> voiceUpdates = new List<float[]>();
-    private static ovrAvatarVisemes RuntimeVisemes;
+    //// Lipsync
+    //private OVRLipSyncMicInput micInput = null;
+    //private OVRLipSyncContext lipsyncContext = null;
+    //private OVRLipSync.Frame currentFrame = new OVRLipSync.Frame();
+    //private float[] visemes = new float[VISEME_COUNT];
+    //private AudioSource audioSource;
+    //private ONSPAudioSource spatializedSource;
+    //private List<float[]> voiceUpdates = new List<float[]>();
+    //private static ovrAvatarVisemes RuntimeVisemes;
 
     // Custom hand poses
     private Transform cachedLeftHandCustomPose;
@@ -232,8 +232,8 @@ public class OvrAvatar : MonoBehaviour
     static OvrAvatar()
     {
         // This size has to match the 'MarshalAs' attribute in the ovrAvatarVisemes declaration.
-        RuntimeVisemes.visemeParams = new float[32];
-        RuntimeVisemes.visemeParamCount = VISEME_COUNT;
+        //RuntimeVisemes.visemeParams = new float[32];
+        //RuntimeVisemes.visemeParamCount = VISEME_COUNT;
     }
 
     void OnDestroy()
@@ -668,24 +668,24 @@ public class OvrAvatar : MonoBehaviour
             return;
         }
 
-        if (Driver != null)
-        {
-            Driver.UpdateTransforms(sdkAvatar);
+//        if (Driver != null)
+//        {
+//            Driver.UpdateTransforms(sdkAvatar);
 
-            foreach (float[] voiceUpdate in voiceUpdates)
-            {
-                CAPI.ovrAvatarPose_UpdateVoiceVisualization(sdkAvatar, voiceUpdate);
-            }
+//            foreach (float[] voiceUpdate in voiceUpdates)
+//            {
+//                CAPI.ovrAvatarPose_UpdateVoiceVisualization(sdkAvatar, voiceUpdate);
+//            }
 
-            voiceUpdates.Clear();
-#if AVATAR_INTERNAL
-            if (BlendController != null)
-            {
-                BlendController.UpdateBlend(sdkAvatar);
-            }
-#endif
-            CAPI.ovrAvatarPose_Finalize(sdkAvatar, Time.deltaTime);
-        }
+//            //voiceUpdates.Clear();
+//#if AVATAR_INTERNAL
+//            if (BlendController != null)
+//            {
+//                BlendController.UpdateBlend(sdkAvatar);
+//            }
+//#endif
+//            CAPI.ovrAvatarPose_Finalize(sdkAvatar, Time.deltaTime);
+//        }
 
         if (RecordPackets)
         {
@@ -762,7 +762,7 @@ public class OvrAvatar : MonoBehaviour
 
     public void UpdateVoiceVisualization(float[] voiceSamples)
     {
-        voiceUpdates.Add(voiceSamples);
+        //voiceUpdates.Add(voiceSamples);
     }
 
     void RecordFrame()
@@ -1062,23 +1062,23 @@ public class OvrAvatar : MonoBehaviour
 
         ConfigureHelpers();
 
-        if (GetComponent<OvrAvatarLocalDriver>() != null)
-        {
-            // Use mic.
-            lipsyncContext.audioLoopback = false;
-            if (CanOwnMicrophone && IsValidMic())
-            {
-                micInput = MouthAnchor.gameObject.AddComponent<OVRLipSyncMicInput>();
-                micInput.enableMicSelectionGUI = false;
-                micInput.MicFrequency = 44100;
-                micInput.micControl = OVRLipSyncMicInput.micActivation.ConstantSpeak;
-            }
+        //if (GetComponent<OvrAvatarLocalDriver>() != null)
+        //{
+        //    // Use mic.
+        //    lipsyncContext.audioLoopback = false;
+        //    if (CanOwnMicrophone && IsValidMic())
+        //    {
+        //        micInput = MouthAnchor.gameObject.AddComponent<OVRLipSyncMicInput>();
+        //        micInput.enableMicSelectionGUI = false;
+        //        micInput.MicFrequency = 44100;
+        //        micInput.micControl = OVRLipSyncMicInput.micActivation.ConstantSpeak;
+        //    }
 
-            // Set lipsync animation parameters in SDK
-            CAPI.ovrAvatar_SetActionUnitOnsetSpeed(sdkAvatar, ACTION_UNIT_ONSET_SPEED);
-            CAPI.ovrAvatar_SetActionUnitFalloffSpeed(sdkAvatar, ACTION_UNIT_FALLOFF_SPEED);
-            CAPI.ovrAvatar_SetVisemeMultiplier(sdkAvatar, VISEME_LEVEL_MULTIPLIER);
-        }
+        //    // Set lipsync animation parameters in SDK
+        //    CAPI.ovrAvatar_SetActionUnitOnsetSpeed(sdkAvatar, ACTION_UNIT_ONSET_SPEED);
+        //    CAPI.ovrAvatar_SetActionUnitFalloffSpeed(sdkAvatar, ACTION_UNIT_FALLOFF_SPEED);
+        //    CAPI.ovrAvatar_SetVisemeMultiplier(sdkAvatar, VISEME_LEVEL_MULTIPLIER);
+        //}
     }
 
     static ovrAvatarLights ovrLights = new ovrAvatarLights();
@@ -1173,7 +1173,7 @@ public class OvrAvatar : MonoBehaviour
         ovrAvatarTransform baseTransform = OvrAvatar.CreateOvrAvatarTransform(transform.position, transform.rotation);
         CAPI.ovrAvatar_UpdateWorldTransform(sdkAvatar, baseTransform);
 
-        UpdateFacewave();
+        //UpdateFacewave();
     }
 
     private void ConfigureHelpers()
@@ -1191,41 +1191,41 @@ public class OvrAvatar : MonoBehaviour
             MouthAnchor = CreateHelperObject(head, MOUTH_HEAD_OFFSET, MOUTH_HELPER_NAME);
         }
 
-        if (GetComponent<OvrAvatarLocalDriver>() != null)
-        {
-            if (audioSource == null)
-            {
-                audioSource = MouthAnchor.gameObject.AddComponent<AudioSource>();
-            }
-            spatializedSource = MouthAnchor.GetComponent<ONSPAudioSource>();
+        //if (GetComponent<OvrAvatarLocalDriver>() != null)
+        //{
+        //    if (audioSource == null)
+        //    {
+        //        audioSource = MouthAnchor.gameObject.AddComponent<AudioSource>();
+        //    }
+        //    spatializedSource = MouthAnchor.GetComponent<ONSPAudioSource>();
 
-            if (spatializedSource == null)
-            {
-                spatializedSource = MouthAnchor.gameObject.AddComponent<ONSPAudioSource>();
-            }
+        //    if (spatializedSource == null)
+        //    {
+        //        spatializedSource = MouthAnchor.gameObject.AddComponent<ONSPAudioSource>();
+        //    }
 
-            spatializedSource.UseInvSqr = true;
-            spatializedSource.EnableRfl = false;
-            spatializedSource.EnableSpatialization = true;
-            spatializedSource.Far = 100f;
-            spatializedSource.Near = 0.1f;
+        //    spatializedSource.UseInvSqr = true;
+        //    spatializedSource.EnableRfl = false;
+        //    spatializedSource.EnableSpatialization = true;
+        //    spatializedSource.Far = 100f;
+        //    spatializedSource.Near = 0.1f;
 
-            // Add phoneme context to the mouth anchor
-            lipsyncContext = MouthAnchor.GetComponent<OVRLipSyncContext>();
-            if (lipsyncContext == null)
-            {
-                lipsyncContext = MouthAnchor.gameObject.AddComponent<OVRLipSyncContext>();
-            }
+        //    // Add phoneme context to the mouth anchor
+        //    lipsyncContext = MouthAnchor.GetComponent<OVRLipSyncContext>();
+        //    if (lipsyncContext == null)
+        //    {
+        //        lipsyncContext = MouthAnchor.gameObject.AddComponent<OVRLipSyncContext>();
+        //    }
 
-            lipsyncContext.provider = EnableLaughter
-                ? OVRLipSync.ContextProviders.Enhanced_with_Laughter
-                : OVRLipSync.ContextProviders.Enhanced;
+        //    lipsyncContext.provider = EnableLaughter
+        //        ? OVRLipSync.ContextProviders.Enhanced_with_Laughter
+        //        : OVRLipSync.ContextProviders.Enhanced;
 
-            // Ignore audio callback if microphone is owned by VoIP
-            lipsyncContext.skipAudioSource = !CanOwnMicrophone;
+        //    // Ignore audio callback if microphone is owned by VoIP
+        //    lipsyncContext.skipAudioSource = !CanOwnMicrophone;
 
-            StartCoroutine(WaitForMouthAudioSource());
-        }
+        //    StartCoroutine(WaitForMouthAudioSource());
+        //}
 
         if (GetComponent<OvrAvatarRemoteDriver>() != null)
         {
@@ -1299,47 +1299,47 @@ public class OvrAvatar : MonoBehaviour
         return helper;
     }
 
-    public void UpdateVoiceData(short[] pcmData, int numChannels)
-    {
-      if (lipsyncContext != null && micInput == null)
-      {
-          lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
-      }
-    }
-    public void UpdateVoiceData(float[] pcmData, int numChannels)
-    {
-      if (lipsyncContext != null && micInput == null)
-      {
-          lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
-      }
-    }
+    //public void UpdateVoiceData(short[] pcmData, int numChannels)
+    //{
+    //  if (lipsyncContext != null && micInput == null)
+    //  {
+    //      lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
+    //  }
+    //}
+    //public void UpdateVoiceData(float[] pcmData, int numChannels)
+    //{
+    //  if (lipsyncContext != null && micInput == null)
+    //  {
+    //      lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
+    //  }
+    //}
 
 
-    private void UpdateFacewave()
-    {
-        if (lipsyncContext != null && (micInput != null || CanOwnMicrophone == false))
-        {
-            // Get the current viseme frame
-            currentFrame = lipsyncContext.GetCurrentPhonemeFrame();
+    //private void UpdateFacewave()
+    //{
+    //    if (lipsyncContext != null && (micInput != null || CanOwnMicrophone == false))
+    //    {
+    //        // Get the current viseme frame
+    //        currentFrame = lipsyncContext.GetCurrentPhonemeFrame();
 
-            // Verify length (-1 for laughter)
-            if (currentFrame.Visemes.Length != (VISEME_COUNT - 1))
-            {
-                Debug.LogError("Unexpected number of visemes " + currentFrame.Visemes);
-                return;
-            }
+    //        // Verify length (-1 for laughter)
+    //        if (currentFrame.Visemes.Length != (VISEME_COUNT - 1))
+    //        {
+    //            Debug.LogError("Unexpected number of visemes " + currentFrame.Visemes);
+    //            return;
+    //        }
 
-            // Copy to viseme array
-            currentFrame.Visemes.CopyTo(visemes, 0);
-            // Copy laughter as final element
-            visemes[VISEME_COUNT - 1] = EnableLaughter ? currentFrame.laughterScore : 0.0f;
+    //        // Copy to viseme array
+    //        currentFrame.Visemes.CopyTo(visemes, 0);
+    //        // Copy laughter as final element
+    //        visemes[VISEME_COUNT - 1] = EnableLaughter ? currentFrame.laughterScore : 0.0f;
 
-            // Send visemes to native implementation.
-            for (int i = 0; i < VISEME_COUNT; i++)
-            {
-                RuntimeVisemes.visemeParams[i] = visemes[i];
-            }
-            CAPI.ovrAvatar_SetVisemes(sdkAvatar, RuntimeVisemes);
-        }
-    }
+    //        // Send visemes to native implementation.
+    //        for (int i = 0; i < VISEME_COUNT; i++)
+    //        {
+    //            RuntimeVisemes.visemeParams[i] = visemes[i];
+    //        }
+    //        CAPI.ovrAvatar_SetVisemes(sdkAvatar, RuntimeVisemes);
+    //    }
+    //}
 }

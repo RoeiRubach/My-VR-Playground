@@ -147,8 +147,6 @@ public class LocomotionTeleport : MonoBehaviour
 	/// </summary>
 	[Tooltip("This prefab will be instantiated as needed and updated to match the current aim target.")]
 	public TeleportDestination TeleportDestinationPrefab;
-	[Tooltip("TeleportDestinationPrefab will be instantiated into this layer.")]
-	public int TeleportDestinationLayer = 0;
 	
 	#region Support Events
 	/// <summary>
@@ -328,8 +326,7 @@ public class LocomotionTeleport : MonoBehaviour
 				if (UseCharacterCollisionData)
 				{
 					var c = LocomotionController.CharacterController;
-					//r = c.radius - c.skinWidth;
-					r = c.radius;
+					r = c.radius - c.skinWidth;
 				}
 				else
 				{
@@ -365,7 +362,6 @@ public class LocomotionTeleport : MonoBehaviour
 		TeleportDestinationPrefab.gameObject.SetActive(false); // ensure the prefab isn't active in order to delay event handler setup until after it has been configured with a reference to this object.
 		TeleportDestination td = GameObject.Instantiate(TeleportDestinationPrefab);
 		td.LocomotionTeleport = this;
-		td.gameObject.layer = TeleportDestinationLayer;
 		_teleportDestination = td;
 		_teleportDestination.LocomotionTeleport = this;
 	}
@@ -787,6 +783,8 @@ public class LocomotionTeleport : MonoBehaviour
 
 		characterTransform.position = destPosition;
 		characterTransform.rotation = destRotation;
+
+		LocomotionController.PlayerController.Teleported = true;
 	}
 
 	/// <summary>
@@ -851,6 +849,6 @@ public class LocomotionTeleport : MonoBehaviour
 
 		characterTransform.position = lerpPosition;
 
-		//LocomotionController.PlayerController.Teleported = true;
+		LocomotionController.PlayerController.Teleported = true;
 	}
 }
