@@ -249,6 +249,7 @@ public class SocialPlatformManager : MonoBehaviour
             Users.GetLoggedInUserFriendsAndRooms()
                 .OnComplete(GetLoggedInUserFriendsAndRoomsCallback);
         }
+        Voip.SetMicrophoneFilterCallback(MicFilter);
     }
 
     void GetLoggedInUserFriendsAndRoomsCallback(Message<UserAndRoomList> msg)
@@ -539,6 +540,33 @@ public class SocialPlatformManager : MonoBehaviour
             s_instance.LogOutputLine("Removing User " + userID);
         }
     }
+
+    public void UpdateVoiceData(short[] pcmData, int numChannels)
+    {
+        if (localAvatar != null)
+        {
+            localAvatar.UpdateVoiceData(pcmData, numChannels);
+        }
+
+        float voiceMax = 0.0f;
+        float[] floats = new float[pcmData.Length];
+        for (int n = 0; n < pcmData.Length; n++)
+        {
+            float cur = floats[n] = (float)pcmData[n] / (float)short.MaxValue;
+            if (cur > voiceMax)
+            {
+                voiceMax = cur;
+            }
+        }
+        voiceCurrent = voiceMax;
+    }
+
+    [MonoPInvokeCallback(typeof(Oculus.Platform.CAPI.FilterCallback))]
+    public static void MicFilter(short[] pcmData, System.UIntPtr pcmDataLength, int frequency, int numChannels)
+    {
+        s_instance.UpdateVoiceData(pcmData, numChannels);
+    }
+
 
     public static RemotePlayer GetRemoteUser(ulong userID)
     {
