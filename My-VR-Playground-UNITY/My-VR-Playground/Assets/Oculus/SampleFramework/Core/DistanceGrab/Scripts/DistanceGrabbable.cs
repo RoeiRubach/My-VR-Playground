@@ -56,7 +56,6 @@ namespace OculusSampleFramework
             m_mpb = new MaterialPropertyBlock();
             RefreshCrosshair();
             m_mpb.SetColor(m_materialColorField, Color.white);
-
             if (m_renderer)
                 m_renderer.SetPropertyBlock(m_mpb);
         }
