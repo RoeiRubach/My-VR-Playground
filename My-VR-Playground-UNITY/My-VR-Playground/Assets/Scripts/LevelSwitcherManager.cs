@@ -11,30 +11,33 @@ public class LevelSwitcherManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (levelToSwitchTo)
+        if (other.gameObject.CompareTag("Player"))
         {
-            case 1:
-                print("Entering Grab level");
-                LevelTriggerManager(other);
-                break;
+            switch (levelToSwitchTo)
+            {
+                case 1:
+                    print("Entering Grab level");
+                    LevelTriggerManager(other);
+                    break;
 
-            case 2:
-                print("Entering DistanceGrab level");
-                LevelTriggerManager(other);
-                break;
+                case 2:
+                    print("Entering DistanceGrab level");
+                    LevelTriggerManager(other);
+                    break;
 
-            case 3:
-                print("Entering Gun level");
-                LevelTriggerManager(other);
-                break;
+                case 3:
+                    print("Entering Gun level");
+                    LevelTriggerManager(other);
+                    break;
 
-            case 4:
-                print("Entering Ragdoll level");
-                LevelTriggerManager(other);
-                break;
+                case 4:
+                    print("Entering Ragdoll level");
+                    LevelTriggerManager(other);
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+            }
         }
     }
 
