@@ -46,12 +46,15 @@ public class GameManager : MonoBehaviour
     {
         if (targetsParent != null)
         {
-            if (targets.Count <= 0 && (SceneManager.sceneCountInBuildSettings > 1))
+            if (targets.Count <= 0)
             {
-                BackToMainMenu();
+                if (SceneManager.sceneCountInBuildSettings > 1)
+                {
+                    BackToMainMenu();
+                }
+                else
+                    SceneManager.LoadScene(0);
             }
-            else
-                SceneManager.LoadScene(0);
         }
     }
 
