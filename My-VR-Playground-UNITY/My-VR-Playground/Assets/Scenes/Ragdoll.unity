@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4172a17b7d19844e90435e9e8f2f483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maleLaughter: {fileID: 805604005}
+  _maleLaughter: {fileID: 805604005}
 --- !u!1001 &3270829248532528011
 PrefabInstance:
   m_ObjectHideFlags: 0
