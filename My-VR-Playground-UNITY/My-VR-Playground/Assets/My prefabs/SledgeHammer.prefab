@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 752288461}
   - component: {fileID: 752288462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 1925496454077563112}
   - component: {fileID: 1222864021163971643}
   - component: {fileID: 7627653630946506955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 15204335373791381}
   - component: {fileID: 4915606912351639208}
   - component: {fileID: 6123406900316594262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hammer Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 520498162249593103}
   - component: {fileID: 6187293043488852874}
   - component: {fileID: 1510579751922092808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 6656203172470345029}
   - component: {fileID: 1964368277125861056}
   - component: {fileID: 57945648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SledgeHammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5118398067310220966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
