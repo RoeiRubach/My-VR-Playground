@@ -5,7 +5,9 @@ public class BallCollisionManager : MonoBehaviour
     private string _ballUpperLimit = "Ball upper limit";
     private AudioSource _audioSourceBell;
     [SerializeField] private AudioSource _maleLaughter;
+    [SerializeField] private Rigidbody _fulcrumIsKinematic;
     private Animator _dummyAnimator;
+    private Renderer _isReadyToHit;
     private Rigidbody _rigidbody;
     private bool _isBallMoved, _isBallTouchedBell;
 
@@ -13,14 +15,22 @@ public class BallCollisionManager : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _dummyAnimator = _maleLaughter.GetComponent<Animator>();
+        _isReadyToHit = GetComponent<Renderer>();
     }
 
     private void FixedUpdate()
     {
         if (!_isBallMoved)
+        {
             _isBallMoved = _rigidbody.velocity != Vector3.zero ? true : false;
+            _isReadyToHit.material.color = Color.green;
+        }
 
         else if(_isBallMoved && !_isBallTouchedBell)
+        {
+            _fulcrumIsKinematic.isKinematic = true;
+            _isReadyToHit.material.color = Color.red;
+
             if (_rigidbody.velocity == Vector3.zero)
             {
                 _isBallMoved = false;
@@ -28,6 +38,7 @@ public class BallCollisionManager : MonoBehaviour
                 _maleLaughter.Play();
                 Invoke("SetAnimatorLaughterBoolFalse", 0.2f);
             }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,6 +54,7 @@ public class BallCollisionManager : MonoBehaviour
 
     private void SetAnimatorLaughterBoolFalse()
     {
+        _fulcrumIsKinematic.isKinematic = false;
         _dummyAnimator.SetBool("didntBallReachBell", false);
     }
 }

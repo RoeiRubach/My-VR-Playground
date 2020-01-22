@@ -2461,6 +2461,7 @@ GameObject:
   - component: {fileID: 597085102002621839}
   - component: {fileID: 6375431273187917011}
   - component: {fileID: 8148464409861126846}
+  - component: {fileID: 1922152329}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2528,6 +2529,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1922152329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381451796309882970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2182.6729, y: 194.2999, z: 2728.3408}
+  m_Center: {x: 0, y: -207.14995, z: -800}
 --- !u!1 &2676818008173139987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,6 +3177,7 @@ GameObject:
   - component: {fileID: 2865679108382604323}
   - component: {fileID: 212950651398000336}
   - component: {fileID: 4287397264970698864}
+  - component: {fileID: 759673467}
   m_Layer: 0
   m_Name: carnival_Cube_391 (1)
   m_TagString: Untagged
@@ -3178,7 +3193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3417183545730978409}
   m_LocalRotation: {x: -0, y: 0.885504, z: -0, w: 0.46463186}
-  m_LocalPosition: {x: 1011.0489, y: 0, z: -1405.1167}
+  m_LocalPosition: {x: 1101.6489, y: 0, z: -1347.4166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6837409239454143528}
@@ -3230,6 +3245,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &759673467
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417183545730978409}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 6931767493463033616, guid: ee0551ac87257f84bb37c6a6c396623c, type: 3}
 --- !u!1 &3472452565258260882
 GameObject:
   m_ObjectHideFlags: 0
@@ -4760,6 +4789,7 @@ GameObject:
   - component: {fileID: 1287556767935037169}
   - component: {fileID: 610062762546925415}
   - component: {fileID: 5719851677212642464}
+  - component: {fileID: 1080000915}
   m_Layer: 0
   m_Name: carnival_Cloner_Cube_142 (1)
   m_TagString: Untagged
@@ -4775,7 +4805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5685899235608518736}
   m_LocalRotation: {x: -0, y: 0.885504, z: -0, w: 0.46463186}
-  m_LocalPosition: {x: 1011.0489, y: 0, z: -1405.1167}
+  m_LocalPosition: {x: 1101.6489, y: 0, z: -1347.4166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6837409239454143528}
@@ -4827,6 +4857,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1080000915
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685899235608518736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -5896683348243692570, guid: ee0551ac87257f84bb37c6a6c396623c, type: 3}
 --- !u!1 &5706122799737088920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5540,6 +5584,7 @@ GameObject:
   - component: {fileID: 9094517474115980520}
   - component: {fileID: 5831791618690562924}
   - component: {fileID: 8350990934474739674}
+  - component: {fileID: 1077937446}
   m_Layer: 0
   m_Name: carnival_Cloner_Cube_13 (1)
   m_TagString: Untagged
@@ -5555,7 +5600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6626614273285182159}
   m_LocalRotation: {x: -0, y: 0.885504, z: -0, w: 0.46463186}
-  m_LocalPosition: {x: 1011.0489, y: 0, z: -1405.1167}
+  m_LocalPosition: {x: 1101.6489, y: 0, z: -1347.4166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6837409239454143528}
@@ -5607,6 +5652,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1077937446
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6626614273285182159}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 5164845258022131445, guid: ee0551ac87257f84bb37c6a6c396623c, type: 3}
 --- !u!1 &6699843911438877531
 GameObject:
   m_ObjectHideFlags: 0
@@ -5695,7 +5754,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7502685894354409850}
   m_Layer: 0
-  m_Name: hammerhop9 1
+  m_Name: hammerhop9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5708,7 +5767,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6793043184529369961}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
@@ -6216,7 +6275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7668650406867930600}
   m_LocalRotation: {x: -0, y: 0.885504, z: -0, w: 0.46463186}
-  m_LocalPosition: {x: 1011.0489, y: 0, z: -1405.1167}
+  m_LocalPosition: {x: 1101.6489, y: 0, z: -1347.4166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6837409239454143528}
@@ -6294,7 +6353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7725559959418508001}
   m_LocalRotation: {x: -0, y: 0.885504, z: -0, w: 0.46463186}
-  m_LocalPosition: {x: 1011.0489, y: 0, z: -1405.1167}
+  m_LocalPosition: {x: 1101.6489, y: 0, z: -1347.4166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6837409239454143528}
