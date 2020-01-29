@@ -3,32 +3,21 @@
 public class DestroyOnCollision : MonoBehaviour
 {
     private float counter = 10f;
+    private TargetsController _targetsController;
     
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.collider.gameObject.name);
-        if (collision.collider.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
+            Destroy(gameObject);
+        
+        else if (collision.gameObject.CompareTag("Target"))
         {
+            _targetsController = collision.gameObject.GetComponentInParent<TargetsController>();
+            _targetsController.DecreaseTargetsCount();
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-        else if (collision.collider.gameObject.CompareTag("Target"))
-        {
-            Destroy(collision.collider.gameObject);
+        else
             Destroy(gameObject);
-        }
-    }
-
-    private void Update()
-    {
-        counter -= Time.deltaTime;
-
-        if (!gameObject.CompareTag("Target"))
-        {
-            if (counter <= 0)
-            {
-                counter = 10f;
-                Destroy(gameObject);
-            }
-        }
     }
 }
