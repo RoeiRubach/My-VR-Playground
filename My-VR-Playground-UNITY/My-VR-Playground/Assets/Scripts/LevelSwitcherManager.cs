@@ -1,38 +1,46 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum LevelIndex
+{
+    GrabLevel = 1,
+    DistanceGrabLevel,
+    GunNBowLevel,
+    RagdollNHaptic,
+}
+
 public class LevelSwitcherManager : MonoBehaviour
 {
-    [SerializeField]
-    private int levelToSwitchTo;
-
-    [SerializeField]
-    private Canvas blackscreenCanvas;
+    [SerializeField] private LevelIndex levelIndex;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            switch (levelToSwitchTo)
+            switch (levelIndex)
             {
-                case 1:
+                case LevelIndex.GrabLevel:
                     print("Entering Grab level");
-                    LevelTriggerManager(other);
+                    SetLevelTriggersOff(other);
+                    SceneController.LoadScene((int)LevelIndex.GrabLevel, 1f, 1f);
                     break;
 
-                case 2:
+                case LevelIndex.DistanceGrabLevel:
                     print("Entering DistanceGrab level");
-                    LevelTriggerManager(other);
+                    SetLevelTriggersOff(other);
+                    SceneController.LoadScene((int)LevelIndex.DistanceGrabLevel, 1f, 1f);
                     break;
 
-                case 3:
+                case LevelIndex.GunNBowLevel:
                     print("Entering Gun level");
-                    LevelTriggerManager(other);
+                    SetLevelTriggersOff(other);
+                    SceneController.LoadScene((int)LevelIndex.GunNBowLevel, 1f, 1f);
                     break;
 
-                case 4:
+                case LevelIndex.RagdollNHaptic:
                     print("Entering Ragdoll level");
-                    LevelTriggerManager(other);
+                    SetLevelTriggersOff(other);
+                    SceneController.LoadScene((int)LevelIndex.RagdollNHaptic, 1f, 1f);
                     break;
 
                 default:
@@ -41,16 +49,9 @@ public class LevelSwitcherManager : MonoBehaviour
         }
     }
 
-    private void LevelTriggerManager(Collider other)
+    private void SetLevelTriggersOff(Collider other)
     {
         gameObject.GetComponent<BoxCollider>().enabled = false;
         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        blackscreenCanvas.transform.GetChild(0).gameObject.SetActive(true);
-        Invoke("SwitchToLevel", 1.2f);
-    }
-
-    private void SwitchToLevel()
-    {
-        SceneManager.LoadScene(levelToSwitchTo);
     }
 }
