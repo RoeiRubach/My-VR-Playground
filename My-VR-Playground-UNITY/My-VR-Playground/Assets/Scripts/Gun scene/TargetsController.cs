@@ -24,6 +24,7 @@ public class TargetsController : MonoBehaviour
         if (_targetCount <= 0 && !_isLevelEnded)
         {
             _isLevelEnded = true;
+            
             SceneController.LoadScene(0, 1f, 1f);
         }
     }

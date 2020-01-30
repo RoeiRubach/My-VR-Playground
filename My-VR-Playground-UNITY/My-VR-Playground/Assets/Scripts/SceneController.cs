@@ -13,13 +13,13 @@ using System.Collections;
 /// </summary>
 public class SceneController : SingletonDontDestroy<SceneController>
 {
-    [SerializeField]
-    private Image _blackImageFader;
+    [SerializeField] private Image _blackImageFader;
+    [SerializeField] private GameObject _sceneControllerRef;
 
     [SerializeField]
     private Canvas _sceneFader;
 
-    private Vector3 _smallForward = new Vector3(0, 0, 0.4f);
+    private Vector3 _smallForward = new Vector3(0, 0, 0.33f);
 
     private void Start()
     {
@@ -28,13 +28,13 @@ public class SceneController : SingletonDontDestroy<SceneController>
 
     public static void LoadScene(int _buildIndex, float _faderDuration, float _transitionWaitTime)
     {
-        Instance.StartCoroutine(Instance.FadeScene(_buildIndex, _faderDuration, _transitionWaitTime));
+        if (Instance)
+            Instance.StartCoroutine(Instance.FadeScene(_buildIndex, _faderDuration, _transitionWaitTime));
     }
 
     private IEnumerator FadeScene(int _buildIndex, float _faderDuration, float _transitionWaitTime)
     {
         _blackImageFader.gameObject.SetActive(true);
-        _sceneFader.transform.SetParent(Instance.GetComponent<Transform>());
 
         for (float t = 0; t < 1; t += Time.deltaTime / _faderDuration)
         {
@@ -42,6 +42,7 @@ public class SceneController : SingletonDontDestroy<SceneController>
             yield return null;
         }
 
+        _sceneFader.transform.SetParent(Instance.GetComponent<Transform>());
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_buildIndex);
         while (!asyncOperation.isDone)
             yield return null;
