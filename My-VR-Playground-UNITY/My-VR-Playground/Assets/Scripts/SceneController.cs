@@ -6,9 +6,10 @@ using System.Collections;
 // I'm inheriting from my "Singleton Don't Destroy" script. Can be found among my gists.
 
 /// <summary>
-/// Switch the canvas' Render Mode to "world space" (in the inspector). 
+/// Switch the canvas' Render Mode to "world space" (in the inspector).
 /// Script needs a reference to an image on a Canvas. Script will find and set "MainCamera" into event camera.
-/// Image will scale according to the using screen. Image will fade in and out between the scenes when called. 
+/// Image will scale according to the using screen. Image will fade in and out between the scenes when called.
+/// Set off the image via the inspector.
 /// </summary>
 public class SceneController : SingletonDontDestroy<SceneController>
 {
