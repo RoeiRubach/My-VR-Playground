@@ -16,7 +16,7 @@ public class RedButtonController : MonoBehaviour
         {
             _buttonPressed.enabled = true;
 
-            SceneController.LoadScene(0, 1.5f, 2f);
+            SceneController.LoadScene();
         }
     }
 }

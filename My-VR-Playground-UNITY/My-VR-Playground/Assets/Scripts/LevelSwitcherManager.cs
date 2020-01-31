@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum LevelIndex
 {
@@ -22,25 +21,25 @@ public class LevelSwitcherManager : MonoBehaviour
                 case LevelIndex.GrabLevel:
                     print("Entering Grab level");
                     SetLevelTriggersOff(other);
-                    SceneController.LoadScene((int)LevelIndex.GrabLevel, 1f, 1f);
+                    SceneController.LoadScene(_buildIndex: (int)LevelIndex.GrabLevel);
                     break;
 
                 case LevelIndex.DistanceGrabLevel:
                     print("Entering DistanceGrab level");
                     SetLevelTriggersOff(other);
-                    SceneController.LoadScene((int)LevelIndex.DistanceGrabLevel, 1f, 1f);
+                    SceneController.LoadScene(_buildIndex: (int)LevelIndex.DistanceGrabLevel);
                     break;
 
                 case LevelIndex.GunNBowLevel:
                     print("Entering Gun level");
                     SetLevelTriggersOff(other);
-                    SceneController.LoadScene((int)LevelIndex.GunNBowLevel, 1f, 1f);
+                    SceneController.LoadScene(_buildIndex: (int)LevelIndex.GunNBowLevel);
                     break;
 
                 case LevelIndex.RagdollNHaptic:
                     print("Entering Ragdoll level");
                     SetLevelTriggersOff(other);
-                    SceneController.LoadScene((int)LevelIndex.RagdollNHaptic, 1f, 1f);
+                    SceneController.LoadScene(_buildIndex: (int)LevelIndex.RagdollNHaptic);
                     break;
 
                 default:

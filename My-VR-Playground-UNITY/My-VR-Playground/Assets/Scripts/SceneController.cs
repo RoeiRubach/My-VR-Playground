@@ -1,23 +1,30 @@
-﻿using UnityEngine;
+﻿// I'm inheriting from my "Singleton Don't Destroy" script. Can be found among my gists.
+
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-// I'm inheriting from my "Singleton Don't Destroy" script. Can be found among my gists.
+public enum buildIndexes
+{
+    MainMenu,
+}
 
 /// <summary>
-/// Switch the canvas' Render Mode to "world space" (in the inspector).
-/// Script needs a reference to an image on a Canvas. Script will find and set "MainCamera" into event camera.
-/// Image will scale according to the using screen. Image will fade in and out between the scenes when called.
-/// Set off the image via the inspector.
+/// Scene transition manager
 /// </summary>
 public class SceneController : SingletonDontDestroy<SceneController>
 {
+    /* 
+     Switch the canvas' Render Mode to "world space" (in the inspector).
+     Script needs a reference to an image on a Canvas. Script will find and set "MainCamera" into event camera.
+     Image will scale according to the using screen. Image will fade in and out between the scenes when called.
+     Set off the image via the inspector.
+    */
+    
     [SerializeField] private Image _blackImageFader;
-    [SerializeField] private GameObject _sceneControllerRef;
 
-    [SerializeField]
-    private Canvas _sceneFader;
+    [SerializeField] private Canvas _sceneFader;
 
     private Vector3 _smallForward = new Vector3(0, 0, 0.33f);
 
@@ -26,8 +33,11 @@ public class SceneController : SingletonDontDestroy<SceneController>
         CanvasInitialization();
     }
 
-    public static void LoadScene(int _buildIndex, float _faderDuration, float _transitionWaitTime)
+    public static void LoadScene(int _buildIndex = (int)buildIndexes.MainMenu,
+                                    float _faderDuration = 1f,
+                                        float _transitionWaitTime = 1f)
     {
+        Debug.Assert(Instance, "LoadScene method been called but Instance is null");
         if (Instance)
             Instance.StartCoroutine(Instance.FadeScene(_buildIndex, _faderDuration, _transitionWaitTime));
     }

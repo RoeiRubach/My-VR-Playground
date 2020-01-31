@@ -2,8 +2,11 @@
 
 public class DestroyGameObject : MonoBehaviour
 {
-    void Update()
+    private void Start()
     {
-        Destroy(gameObject, 1.5f);
+        if (!transform.CompareTag("Bullet"))
+            Destroy(gameObject, 1.5f);
+        else
+            Destroy(gameObject, 7f);
     }
 }
