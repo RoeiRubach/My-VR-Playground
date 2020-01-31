@@ -10,10 +10,6 @@ public class TargetManager : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
-
-            GunNBowSceneManager.Instance.RegisterTargets();
-
-            GunNBowSceneManager.Instance.IsAllTargetsDestroyed();
         }
     }
 }

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gun&Bow_Playground.unity
     guid: 6511e0475d91c4f4698f427fd0de1608
+  - enabled: 1
+    path: Assets/Scenes/Ragdoll and Haptic.unity
+    guid: d165a6242c34fc14cbe5ca8c87dd49fe
   m_configObjects: {}

@@ -19,7 +19,7 @@ public class FulcrumController : MonoBehaviour
 
     private IEnumerator SetFulcrumBack()
     {
-        print("IEnumerator started");
+        OVRInput.SetControllerVibration(0.3f, 0.3f);
         _isFulcrumMoved = true;
         yield return new WaitForSeconds(1f);
         transform.rotation = _startingRotation;

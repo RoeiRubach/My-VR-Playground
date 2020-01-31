@@ -48,6 +48,7 @@ public class BallCollisionManager : MonoBehaviour
             _isBallTouchedBell = true;
             _audioSourceBell = other.transform.GetComponent<AudioSource>();
             _audioSourceBell.Play();
+            OVRInput.SetControllerVibration(1f, 1f);
             RagdollManager.Instance.SetRagdollON();
         }
     }

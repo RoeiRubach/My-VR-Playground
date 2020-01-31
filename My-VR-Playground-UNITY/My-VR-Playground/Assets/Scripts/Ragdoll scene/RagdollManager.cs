@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections.Generic;
 
-public class RagdollManager : MonoBehaviour
+public class RagdollManager : Singleton<RagdollManager>
 {
-    public static RagdollManager Instance;
     [SerializeField] private List<Rigidbody> _ragdollKinematic = new List<Rigidbody>();
 
-    private void Awake()
+    private void Start()
     {
-        if (Instance == null)
-            Instance = this;
-
         SetRagdollOFF();
     }
 

@@ -52,6 +52,7 @@ public class SceneController : SingletonDontDestroy<SceneController>
             yield return null;
         }
 
+        _blackImageFader.color = new Color(0, 0, 0, 1);
         _sceneFader.transform.SetParent(Instance.GetComponent<Transform>());
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_buildIndex);
         while (!asyncOperation.isDone)
@@ -59,7 +60,7 @@ public class SceneController : SingletonDontDestroy<SceneController>
 
         CanvasInitialization();
         yield return new WaitForSeconds(_transitionWaitTime);
-
+        
         for (float t = 0; t < 1; t += Time.deltaTime / 0.5f)
         {
             _blackImageFader.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, t));
