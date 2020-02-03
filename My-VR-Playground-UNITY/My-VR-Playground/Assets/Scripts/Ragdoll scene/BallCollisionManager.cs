@@ -10,6 +10,7 @@ public class BallCollisionManager : MonoBehaviour
     private Renderer _isReadyToHit;
     private Rigidbody _rigidbody;
     private bool _isBallMoved, _isBallTouchedBell;
+    private float _dragBeforeHit = 7f, _dragAfterHit = 0f;
 
     private void Start()
     {
@@ -22,7 +23,8 @@ public class BallCollisionManager : MonoBehaviour
     {
         if (!_isBallMoved)
         {
-            _isBallMoved = _rigidbody.velocity != Vector3.zero ? true : false;
+            _isBallMoved = _rigidbody.velocity.sqrMagnitude >= 0.1 ? true : false;
+            _rigidbody.drag = _dragBeforeHit;
             _isReadyToHit.material.color = Color.green;
         }
 
@@ -31,12 +33,17 @@ public class BallCollisionManager : MonoBehaviour
             _fulcrumIsKinematic.isKinematic = true;
             _isReadyToHit.material.color = Color.red;
 
-            if (_rigidbody.velocity == Vector3.zero)
+            if (_rigidbody.velocity.sqrMagnitude <= 0.1)
             {
-                _isBallMoved = false;
-                _dummyAnimator.SetBool("didntBallReachBell", true);
-                _maleLaughter.Play();
-                Invoke("SetAnimatorLaughterBoolFalse", 0.2f);
+                _rigidbody.drag = _dragAfterHit;
+
+                if (_rigidbody.velocity == Vector3.zero)
+                {
+                    _dummyAnimator.SetBool("didntBallReachBell", true);
+                    _maleLaughter.Play();
+                    _isBallMoved = false;
+                    Invoke("SetAnimatorLaughterBoolFalse", 0.2f);
+                }
             }
         }
     }

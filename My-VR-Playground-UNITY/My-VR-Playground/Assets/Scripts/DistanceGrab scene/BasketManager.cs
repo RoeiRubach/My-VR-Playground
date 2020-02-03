@@ -43,13 +43,22 @@ public class BasketManager : MonoBehaviour
         }
         else
         {
-            _basketRefMat.material.color = Color.red;
-            Invoke("MaterialBackToWhite", 1f);
+            if (!other.name.Equals("GrabVolumeCone"))
+            {
+                _basketRefMat.GetComponent<MeshCollider>().enabled = false;
+
+                if (other.GetComponent<Rigidbody>())
+                    other.GetComponent<Rigidbody>().AddExplosionForce(90f, (other.transform.position - other.transform.right * 0.3f - other.transform.up * 0.6f), 1f);
+
+                _basketRefMat.material.color = Color.red;
+                Invoke("MaterialBackToWhite", 1f);
+            }
         }
     }
 
     private void MaterialBackToWhite()
     {
+        _basketRefMat.GetComponent<MeshCollider>().enabled = true;
         _basketRefMat.material.color = Color.white;
     }
 }

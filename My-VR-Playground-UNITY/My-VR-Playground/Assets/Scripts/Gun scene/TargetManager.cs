@@ -4,7 +4,7 @@ public class TargetManager : MonoBehaviour
 {
     private string _bulletTag = "Bullet";
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag(_bulletTag))
         {
