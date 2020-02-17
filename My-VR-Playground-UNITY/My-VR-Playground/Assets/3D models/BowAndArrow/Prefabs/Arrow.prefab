@@ -65,6 +65,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -123,7 +124,7 @@ GameObject:
   - component: {fileID: 6223868130374480976}
   m_Layer: 0
   m_Name: Tip
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,6 +176,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -196,7 +198,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 6223868130374480975}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.013795684
   m_Height: 0.094175205
   m_Direction: 1
@@ -214,7 +216,7 @@ GameObject:
   - component: {fileID: 3544760493190169588}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,9 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efde785f55475d4faf016df659306fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 2000
-  m_Tip: {fileID: 8386148805111352677}
-  m_RigidBody: {fileID: 0}
+  _speed: 2000
+  _tip: {fileID: 8386148805111352677}
 --- !u!54 &3544760493190169588
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,4 +265,4 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
