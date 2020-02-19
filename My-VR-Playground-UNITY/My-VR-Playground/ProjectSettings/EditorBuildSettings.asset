@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Grab_Playground.unity
     guid: be906f4da3c22f94ab2599614cc66f13
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DistanceGrab_Playground.unity
     guid: fec1fa7e36c814843873569585796a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gun&Bow_Playground.unity
     guid: 6511e0475d91c4f4698f427fd0de1608
   - enabled: 1
